@@ -1,0 +1,27 @@
+Insert Trip:
+
+{
+"location":"Berlin",
+"trip_date":"2025-01-01"
+}
+
+Insert Trip Participants:
+
+{
+"userId":"aakaskhadka@gmail.com",
+"tripId":1
+}
+
+Create User 
+{
+"email":"ak@mail.com",
+"password":"1234",
+"name":"akk"
+}
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0Mzc4NTg4MSwiaWF0IjoxNzQzNjk5NDgxLCJqdGkiOiI0Y2ZlMzY0YzY0MzA0NWFiYmZkNDI1ODE4M2M1MDkwNiIsInVzZXJfaWQiOjF9.3eNv6R0TZmDsVBRc0UOeFDFzuOl9wTgVUChJW02cFzg",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzNzAzMDgxLCJpYXQiOjE3NDM2OTk0ODEsImp0aSI6ImM1ZWI0MTJhZTI5YTQzYmRhZWY5ZjI0MWVhNmRiZTlmIiwidXNlcl9pZCI6MX0.bMBINSRQ1loJufnJDopvoQwg8ETie72-CDFIts1ME7c"
+}
+
+curl -X GET http://127.0.0.1:8000/api/protected/ -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzNzAzMDgxLCJpYXQiOjE3NDM2OTk0ODEsImp0aSI6ImM1ZWI0MTJhZTI5YTQzYmRhZWY5ZjI0MWVhNmRiZTlmIiwidXNlcl9pZCI6MX0.bMBINSRQ1loJufnJDopvoQwg8ETie72-CDFIts1ME7c"
