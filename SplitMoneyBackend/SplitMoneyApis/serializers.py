@@ -14,3 +14,9 @@ class TripParticipantsSerializer(serializers.ModelSerializer):
         model = models.TripParticipants
         read_only_fields = ['created_date']
         fields = '__all__'
+
+class ExpenseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Expenses
+        fields = '__all__'
+        extra_kwargs = {'payer_id': {'required': False}}

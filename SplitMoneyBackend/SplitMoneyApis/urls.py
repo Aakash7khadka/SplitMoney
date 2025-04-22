@@ -5,4 +5,5 @@ urlpatterns = [
     path('alltrips', views.get_all_trips),
     path('add_trip/', views.insert_trip),
     path('add_trip_participants/', views.insert_trip_participants),
+    path('add_expenses/', views.insert_expenses),
 ]

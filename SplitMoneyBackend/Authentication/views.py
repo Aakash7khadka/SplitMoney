@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 import requests
+import json
 
 @api_view(['POST'])
 def register_user(request):
@@ -39,13 +40,24 @@ def logout_user(request):
 @permission_classes([IsAuthenticated])
 def protected_view(request):
     """Example protected view"""
-    return Response({'message': f'Hello, {request.user.username}!'}, status=status.HTTP_200_OK)
+    print(f"User auth status: {request.user.is_authenticated}")  # Should be True
+    print(f"User class: {type(request.user.email)}")  # Should be User model
+    print(f"User object: {request.user.__dict__}")  # Show all attributes
+    return Response({'message': f'Hello, {request.user.email.split("@")[0]}!'}, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def make_request(request):
-    access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzNzA1OTI4LCJpYXQiOjE3NDM3MDIzMjgsImp0aSI6IjRjMjE0ZWZmYzQ0NzQzYWVhYjllMDRiNTRmMzAxZjk2IiwidXNlcl9pZCI6MX0.vkQA-5Tn5OzWr6KZwb-CH6yN8EeBLUZLqhwkxSKeEUU'
+    data =  {
+    "email": "ak@mail.com",
+    "password": "1234"
+    }
+    response = requests.post("http://127.0.0.1:8000/users/api/token/", data)
+    
+    print(response.text)
+    access_token = json.loads(response.text)["access"]
     headers = {"Authorization": f"Bearer {access_token}"}
-    response = requests.get("http://127.0.0.1:8000/api/protected/", headers=headers)
+    # response = requests.get("http://127.0.0.1:8000/users/api/protected/", headers=headers)
+    response = requests.get("http://127.0.0.1:8000/trips/alltrips", headers=headers)
 
     if response.status_code == 200:
         try:
